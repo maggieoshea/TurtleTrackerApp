@@ -89,7 +89,7 @@ for lineString in line_list:
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}, lon: {obs_lon} on {obs_date}")
 #%%
 
-### Task 4a ###
+### Task 5 ###
 #Create a variable pointing to the data file
 file_name="Data/raw/Sara.txt"
 
@@ -104,13 +104,13 @@ file_object.close()
 
 #Create two empty dictionaries
 date_dict = {}
-coord_dit =  {}
+location_dict =  {}
 
 
 
 #Pretend we read one line of data from the file
 for lineString in line_list:
-    if lineString.startswith("#"or"u"):
+    if lineString[0] in ("#", "u"):
         continue
 #Split the string into a list of data items
     lineData = lineString.split(    )
@@ -122,8 +122,10 @@ for lineString in line_list:
     obs_lat = lineData[6]
     obs_lon = lineData [7]
     
-    
     #Print the location of sara
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}, lon: {obs_lon} on {obs_date}")
     
+    date_dict[record_id] = obs_date
+    location_dict[record_id] = (obs_lat, obs_lon)
+
     
