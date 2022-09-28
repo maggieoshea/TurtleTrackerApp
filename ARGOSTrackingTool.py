@@ -131,6 +131,10 @@ for lineString in line_list:
 #%%
 
 ### Task 6 ###
+
+#Ask the user for a date, specifying the format:
+user_date = "7/3/2003"
+
 #Create a variable pointing to the data file
 file_name="Data/raw/Sara.txt"
 
@@ -171,3 +175,10 @@ for lineString in line_list:
     
         date_dict[record_id] = obs_date
         location_dict[record_id] = (obs_lat, obs_lon)
+        
+        
+        ##TEST
+    for the_key, the_value in date_dict.items():
+        #See if the date (the value) matches the user date
+        if the_value == user_date:
+            print(the_key, the_value)
