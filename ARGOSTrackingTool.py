@@ -170,8 +170,6 @@ for lineString in line_list:
 
 ### Task 6 ###
 
-#Ask the user for a date, specifying the format:
-user_date = "7/3/2003"
 
 #Create a variable pointing to the data file
 file_name="Data/raw/Sara.txt"
@@ -220,10 +218,10 @@ for lineString in line_list:
 ### Task 7 ###
 
 #Ask the user for a date, specifying the format:
-user_date = "7/3/2003"
+user_date = input("Enter a date (M/D/YYYY)")
 
 #Create a variable pointing to the data file
-file_name="Data/raw/Sara.txt"
+file_name="./Data/raw/Sara.txt"
 
 #Create a file object from the file 
 file_object = open(file_name, "r")
@@ -258,14 +256,18 @@ for lineString in line_list:
     if obs_lc in ("1", "2", "3"):
     
     #Print the location of sara
-        print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}, lon: {obs_lon} on {obs_date}")
+        #print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}, lon: {obs_lon} on {obs_date}")
     
         date_dict[record_id] = obs_date
         location_dict[record_id] = (obs_lat, obs_lon)
         
-        
-        ##TEST
-    for the_key, the_value in date_dict.items():
-        #See if the date (the value) matches the user date
-        if the_value == user_date:
-            print(the_key, the_value)
+matching_keys = []    
+    ##TEST
+for the_key, the_value in date_dict.items():
+    #See if the date (the value) matches the user date
+    if the_value == user_date:
+        matching_keys.append(the_key)
+
+for matching_key in matching_keys:
+    obs_lat, obs_lon = location_dict[matching_key]
+    print(f"Record {matching_key} indicates Sara was seen at lat: {obs_lat}, lon {obs_lon} on {user_date}")
